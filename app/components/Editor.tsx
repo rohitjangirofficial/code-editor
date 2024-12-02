@@ -47,7 +47,7 @@ const Editor = ({
     },
   });
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   const [compiling, setCompiling] = useState<boolean>(false);
 
