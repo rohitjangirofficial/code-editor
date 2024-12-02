@@ -12,15 +12,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // const { data } = await axios.post("https://api.jdoodle.com/v1/execute", {
-    //   script: code,
-    //   language,
-    //   versionIndex,
-    //   clientId: "8b0c23e273d85f44482e6bd9e3fe668b",
-    //   clientSecret:
-    //     "8d6db4e9ffb89db13ed6a983b1766b19ef83c68a6ef07fd98d9cadfea4c7be1a",
-    // });
-
     const { data } = await axios.post(
       "https://emkc.org/api/v2/piston/execute",
       {
