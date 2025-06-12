@@ -138,23 +138,31 @@ int main() {
   return (
     <section className="flex flex-col md:flex-row">
       <div className="flex h-[75px] flex-row md:flex-col justify-between items-center gap-2 overflow-x-auto border-r-2 border-neutral-500 bg-neutral-700 p-2 md:h-screen md:min-w-[75px]">
-        <div className="flex h-full md:h-auto flex-row items-center gap-2 overflow-x-auto w-full md:flex-col">
+        <div className="flex h-full md:overflow-x-hidden flex-row items-center gap-2 overflow-x-auto w-full md:flex-col">
           {languageTemplates.map((language) => (
-            <button
+            <div
               key={language.value}
-              onClick={() => {
-                // setCurrentLanguage(language.value);
-                setCurrentLanguage(language);
-
-                setFileName(language.fileName);
-                setCode(language.boilerplate);
-              }}
-              className={`${
-                language.value === currentLanguage.value ? "bg-blue-600" : ""
-              } flex aspect-square h-full items-center justify-center rounded-[4px] border-2 border-neutral-500 md:h-auto md:w-full`}
+              className="relative group w-full h-full md:h-auto"
             >
-              <i className={`${language.icon} text-3xl text-white`}></i>
-            </button>
+              <button
+                onClick={() => {
+                  setCurrentLanguage(language);
+                  setFileName(language.fileName);
+                  setCode(language.boilerplate);
+                }}
+                className={`${
+                  language.value === currentLanguage.value ? "bg-blue-600" : ""
+                } flex aspect-square h-full items-center justify-center rounded-[4px] border-2 border-neutral-500 md:h-auto md:w-full`}
+              >
+                <i className={`${language.icon} text-3xl text-white`}></i>
+              </button>
+
+              {/* Tooltip */}
+              <div className="absolute top-[50%] md:top-full left-1/2 hidden translate-x-[-50%] mt-2 group-hover:block whitespace-nowrap bg-gray-800 text-white text-[10px] w-full py-1  rounded text-center shadow-lg z-10">
+                {language.value.charAt(0).toUpperCase() +
+                  language.value.slice(1)}
+              </div>
+            </div>
           ))}
         </div>
         <div className="h-full md:h-auto md:w-full">
